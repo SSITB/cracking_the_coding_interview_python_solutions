@@ -112,5 +112,86 @@ class DoublyLinkedList():
 		print(printable_string)
 
 
+class Stack():
+
+	def __init__(self):
+
+		self.head = None
+
+
+	def push(self, value):
+
+		if not self.head:
+			self.head = Node(value=value)
+
+		else:
+			new_node = Node(value=value, next=self.head)
+			self.head = new_node
+
+
+	def pop(self):
+
+		if self.head:
+			returnable_node = self.head
+			self.head = self.head.next
+			return returnable_node
+
+		else:
+			raise Exception('Stack Underflow')
+
+
+	def isEmpty(self):
+
+		return not self.head
+
+
+	def peek(self):
+
+		return self.head.value
+
+
+
+class Queue():
+
+	def __init__(self):
+
+		self.head = None
+		self.tail = None
+
+
+	def isEmpty(self):
+
+		return not self.head
+
+
+	def enqueue(self, value):
+
+		if self.isEmpty():
+			self.head = Node(value=value)
+			self.tail = self.head
+
+		else:
+			new_node = Node(value=value, previous=self.tail)
+			self.tail.next = new_node
+			self.tail = new_node
+
+
+	def dequeue(self):
+
+		if self.isEmpty():
+			raise Exception("Empty queue")
+
+		else:
+			returnable = self.tail
+			self.tail = self.tail.previous
+			self.tail.next = None
+
+
+
+
+
+
+
+
 
 		 	
