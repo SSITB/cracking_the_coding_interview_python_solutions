@@ -187,6 +187,96 @@ class Queue():
 			self.tail.next = None
 
 
+class TreeNode():
+
+	def __init__(self, value):
+
+		self.value = value
+		self.left = None
+		self.right = None
+
+
+	def insert(self, value):
+
+		if value<=self.value:
+			if self.left==None:
+				self.left = TreeNode(value=value)
+			else:
+				self.left.insert(value)
+		else:
+			if self.right==None:
+				self.right = TreeNode(value=value)
+			else:
+				self.right.insert(value)
+
+
+	def find(self, value):
+
+		if value==self.value:
+			return True
+
+		elif value<=self.value:
+			return self.left.find(value)
+
+		else:
+			return self.right.find(value)
+
+		return False
+
+
+	def inOrderTraversal(self):
+
+		if self.left is not None:
+			self.left.inOrderTraversal()
+
+		print(self.value)
+
+		if self.right is not None:
+			self.right.inOrderTraversal()
+
+
+
+	def preOrderTraversal(self):
+
+		print(self.value)
+
+		if self.left is not None:
+			self.left.preOrderTraversal()
+
+		if self.right is not None:
+			self.right.preOrderTraversal()
+
+
+	def postOrderTraversal(self):
+
+		if self.left is not None:
+			self.left.postOrderTraversal()
+
+		if self.right is not None:
+			self.right.postOrderTraversal()
+
+		print(self.value)
+
+
+	def max_depth(self):
+
+		if self.value==None:
+			return 0
+
+		else:
+			return max(self.height(self.left), self.height(self.right))+1
+
+
+	def min_depth(self):
+
+		if self.value==None:
+			return 0
+
+		else:
+			return min(self.height(self.left), self.height(self.right))+1
+
+
+
 
 
 
