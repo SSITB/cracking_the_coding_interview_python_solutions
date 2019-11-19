@@ -189,7 +189,7 @@ class Queue():
 
 class TreeNode():
 
-	def __init__(self, value):
+	def __init__(self, value=None):
 
 		self.value = value
 		self.left = None
@@ -198,11 +198,19 @@ class TreeNode():
 
 	def insert(self, value):
 
-		if value<=self.value:
+		# print(self.value, value)
+		if value==None:
+			return
+			
+		elif self.value == None:
+			self.value=value
+
+		elif value<=self.value:
 			if self.left==None:
 				self.left = TreeNode(value=value)
 			else:
 				self.left.insert(value)
+
 		else:
 			if self.right==None:
 				self.right = TreeNode(value=value)
@@ -212,7 +220,10 @@ class TreeNode():
 
 	def find(self, value):
 
-		if value==self.value:
+		if self.value==None:
+			return None
+
+		elif value==self.value:
 			return True
 
 		elif value<=self.value:
