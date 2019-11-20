@@ -161,7 +161,11 @@ class Queue():
 
 	def isEmpty(self):
 
-		return not self.head
+		if self.head==None:
+			return True
+		else:
+			return False
+		# return not self.head
 
 
 	def enqueue(self, value):
@@ -182,9 +186,11 @@ class Queue():
 			raise Exception("Empty queue")
 
 		else:
-			returnable = self.tail
-			self.tail = self.tail.previous
-			self.tail.next = None
+			returnable = self.head
+			self.head = self.head.next
+			
+			return returnable
+
 
 
 class TreeNode():
